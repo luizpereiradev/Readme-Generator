@@ -1,11 +1,7 @@
-import CodeMirror from "@uiw/react-codemirror";
-import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
-import { languages } from "@codemirror/language-data";
-import { dracula } from "@uiw/codemirror-theme-dracula";
-import remarkGfm from "remark-gfm";
-import ReactMarkdown from "react-markdown";
 import { useState } from "react";
-import { Configuration, OpenAIApi } from "openai";
+import CodeEditor from "./components/CodeEditor";
+import Preview from "./components/Preview";
+import generateReadme from "./utils/api";
 
 export default function App() {
   const [code, setCode] = useState(`
@@ -45,51 +41,13 @@ export default function App() {
   README Generator é um software de código aberto licenciado sob a licença MIT.
   `);
 
-  const configuration = new Configuration({
-    apiKey:'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' ,
-  });
-  const openai = new OpenAIApi(configuration);
-
-  const getReadme = async (event) => {
-    event.preventDefault()
-    //setar o texto como code
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `Crie um readme para um projeto o nome é ${name} e em resumo ele é: ${description}`,
-      temperature: 0,
-      max_tokens: 1000,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    })
-    setCode(response.data.choices[0].text);
-  }
-
   const [name, setName] = useState('README GENERATOR')
   const [description, setDescription] = useState('um gerador de readme que usa ia para gerar o readme de projetos open source, ele é feito usando react e openai')
 
   return (
-    <div style={{ display: "flex", height: '100vh', width: "100vw"}}>
-      <div style={{ display: "flex", height: '100%', width: "80%"}}>
-        <CodeMirror
-          theme={dracula}
-          height="100%"
-          width="40vw"
-          value={code}
-          onChange={(e) => setCode(e)}
-          extensions={[
-            markdown({ base: markdownLanguage, codeLanguages: languages }),
-          ]}
-        />
-        <div style={{ width: "49%", height:"100%", paddingLeft: "1%", overflow:"auto"}}>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            children={code}
-          />
-        </div>
-      </div>
-
-      <form onSubmit={(e) => getReadme(e)}>
+    <div className="flex h-[80vh] w-screen gap-4 mt-20 ml-5">
+      <div className="w-[15vw] h-full overflow-auto flex flex-col">
+      {/* <form onSubmit={(e) => generateReadme(e, name, description, setCode)}>
         <label style={{display: "block"}}>
           Nome Do Projeto
           <input
@@ -108,8 +66,13 @@ export default function App() {
         </label>
         <br />
         <input type="submit" value="Submit" />
-      </form>
-
+      </form> */}
+        <button onClick={(e) => generateReadme(e, name, description, setCode)}>Gerar Readme</button>
+      </div>
+      <div className="flex h-4/5 w-4/5 gap-8">
+        <CodeEditor code={code} setCode={setCode}/>
+        <Preview code={code}/>
+      </div>
     </div>
   );
 }
