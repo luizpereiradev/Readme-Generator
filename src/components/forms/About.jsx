@@ -22,7 +22,6 @@ function About({ setProject, project, setPage, setCode }) {
             value={project.name}
             onChange={(e) => setProject({ ...project, name: e.target.value })}
           />
-          <p>{JSON.stringify(project)}</p>
         </label>
 
         <label>
