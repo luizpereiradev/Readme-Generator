@@ -10,6 +10,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 pre{
-  @apply font-medium text-lg leading-6 whitespace-pre-wrap bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto;
+  @apply font-medium text-lg leading-6 whitespace-pre-wrap bg-[hsl(237,14%,27%)] text-gray-100 p-4 rounded-lg overflow-x-auto;
   word-wrap: break-word;
 }
