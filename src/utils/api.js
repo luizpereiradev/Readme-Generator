@@ -1,16 +1,17 @@
 import { Configuration, OpenAIApi } from 'openai';
 
+
 const configuration = new Configuration({
-  apiKey:'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' ,
+  apiKey:'your api key' ,
 });
 
 const openai = new OpenAIApi(configuration);
 
-const generateReadme = async (event, name, description, setCode) => {
+const generateReadme = async (event, setCode, newProject) => {
   event.preventDefault()
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `Crie um readme para um projeto o nome é ${name} e em resumo ele é: ${description}`,
+    prompt: `Crie um readme para um projeto o nome é ${newProject.name} e em resumo ele é: ${newProject.desc}`,
     temperature: 0,
     max_tokens: 1000,
     top_p: 1,

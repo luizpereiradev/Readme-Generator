@@ -1,15 +1,15 @@
 import { useState } from "react";
 import CodeEditor from "./components/CodeEditor";
+import About from "./components/forms/About";
 import Preview from "./components/Preview";
-import generateReadme from "./utils/api";
 
 /* TODO:
   - [x] Criar um editor de código
   - [x] Criar um preview do readme
+  - [x] Criar um botão para copiar o readme gerado
+  - [] Criar um botão para salvar o readme gerado
   - [] Criar um botão para gerar o readme
   - [] Criar um formulário para inserir as informações do projeto
-  - [] Criar um botão para copiar o readme gerado
-  - [] Criar um botão para salvar o readme gerado
 */
 
 export default function App() {
@@ -49,38 +49,44 @@ Se você deseja contribuir para o README Generator, siga as etapas abaixo:
 README Generator é um software de código aberto licenciado sob a licença MIT.
   `);
 
+  const [page, setPage] = useState(0)
   const [name, setName] = useState('README GENERATOR')
-  const [description, setDescription] = useState('um gerador de readme que usa ia para gerar o readme de projetos open source, ele é feito usando react e openai')
+  const [newProject, setNewProject] = useState({})
 
   return (
     <div className="flex h-[80vh] w-screen gap-3 mt-20">
       <div className="w-[15vw] h-full overflow-auto flex flex-col">
         <p>Menu</p>
-      {/* <form onSubmit={(e) => generateReadme(e, name, description, setCode)}>
-        <label style={{display: "block"}}>
-          Nome Do Projeto
-          <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          />
-        </label>
+        {/* <form onSubmit={(e) => generateReadme(e, setCode, newProject)}>
+          <label style={{display: "block"}}>
+            Nome Do Projeto
+            <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            />
+          </label>
 
-        <label>
-          <p>resuma o seu projeto</p>
-          <textarea type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          />
-        </label>
-        <br />
-        <input type="submit" value="Submit" />
-      </form> */}
-        <button onClick={(e) => generateReadme(e, name, description, setCode)}>Gerar Readme</button>
+          <label>
+            <p>resuma o seu projeto</p>
+            <textarea type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          <br />
+          <input type="submit" value="Submit" />
+        </form> */}
+        <button onClick={(e) => setPage(page + 1)}>Gerar Readme</button>
       </div>
       <div className="flex h-4/5 w-4/5 gap-8">
-        <CodeEditor code={code} setCode={setCode}/>
-        <Preview code={code}/>
+        {page === 0 &&
+        <>
+          <CodeEditor code={code} setCode={setCode}/>
+          <Preview code={code}/> 
+        </>
+        }
+        {page >= 1 && <About setProject = {setNewProject} project = {newProject} setPage = {setPage} setCode = {setCode}/>}
       </div>
     </div>
   );

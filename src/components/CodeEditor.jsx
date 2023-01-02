@@ -17,8 +17,8 @@ function CodeEditor({ code, setCode }) {
         value={code}
         onChange={(e) => setCode(e)}
         extensions={[
-          markdown({ base: markdownLanguage, codeLanguages: languages }),
           EditorView.lineWrapping,
+          markdown({ base: markdownLanguage, codeLanguages: languages })
         ]}
       >
         <FiCopy
