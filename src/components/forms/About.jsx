@@ -1,14 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import generateReadme from '../../utils/api';
+import { GlobalContext } from '../../store/GlobalStorage';
 
 function About({
-  setProject, project, setPage, setCode,
+  project, setPage, setProject,
 }) {
+  const { projects, atualProject } = React.useContext(GlobalContext);
+  const [projectsList, setCode] = projects;
+  const setAtual = atualProject[1];
   return (
     <form
-      onSubmit={(e) => {
-        generateReadme(e, setCode, project);
+      onSubmit={async (e) => {
+        console.log('carregando');
+        await setCode({ ...projectsList, [project.name]: await generateReadme(e, project) });
+        console.log('carregamento concluido');
+        setAtual(project.name);
         setPage((page) => page - 1);
       }}
       className="flex flex-col h-full w-full items-center justify-center"
@@ -18,6 +25,7 @@ function About({
           Nos diga mais sobre seu projeto
         </h1>
         <label htmlFor="name">
+          <p className="pt-3 pb-1 m-0">Nome do Projeto:</p>
           <input
             className="w-full rounded-xl h-8"
             type="text"
@@ -38,7 +46,7 @@ function About({
           />
         </label>
       </div>
-      <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-20">
+      <button type="submit" className="w-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-20">
         Proximo
       </button>
     </form>
@@ -52,7 +60,6 @@ About.propTypes = {
     desc: PropTypes.string.isRequired,
   }).isRequired,
   setPage: PropTypes.func.isRequired,
-  setCode: PropTypes.func.isRequired,
 };
 
 export default About;

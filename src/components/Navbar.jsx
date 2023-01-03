@@ -1,17 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { VscMarkdown } from 'react-icons/vsc';
+import { FiPlus, FiDownload } from 'react-icons/fi';
 import downloadFile from '../utils/download';
 import { GlobalContext } from '../store/GlobalStorage';
 
 function Navbar({ setPage }) {
-  const { projects } = React.useContext(GlobalContext);
+  const { projects, atualProject } = React.useContext(GlobalContext);
   const [projectsList] = projects;
+  const [atual, setAtualProject] = atualProject;
   return (
-    <div>
-      <button type="button" onClick={() => setPage(1)}>Gerar novo Readme</button>
-      <button type="button" onClick={() => downloadFile()}>Download</button>
-      <div>
-        {Object.keys(projectsList).map((project) => <button type="button" onClick={(e) => { console.log(e.target.textContent); }} key={project}>{project}</button>)}
+    <div className="bg-[#282a36] p-2 w-64">
+      <button className="border border-white/20" type="button" onClick={() => setPage(1)}>
+        <FiPlus size={16} />
+        Gerar novo Readme
+      </button>
+      <nav className="h-3/4 overflow-scroll">
+        {Object.keys(projectsList).map((project) => (
+          <button
+            type="button"
+            onClick={(e) => {
+              setAtualProject(e.target.textContent);
+              setPage(0);
+            }}
+            key={project}
+          >
+            <VscMarkdown size={16} />
+            {project}
+          </button>
+        ))}
+      </nav>
+      <div className="border-0 border-t-gray-500 border-t-[1px] border-solid">
+        <button type="button" onClick={() => downloadFile(projectsList[atual])}>
+          <FiDownload size={16} />
+          Download
+        </button>
       </div>
     </div>
   );

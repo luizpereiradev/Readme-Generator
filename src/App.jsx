@@ -19,7 +19,7 @@ import { GlobalContext } from './store/GlobalStorage';
 
 export default function App() {
   const { projects } = React.useContext(GlobalContext);
-  const [setProjects] = projects;
+  const setProjects = projects[1];
 
   const [page, setPage] = React.useState(0);
   const [newProject, setNewProject] = React.useState({
@@ -28,7 +28,7 @@ export default function App() {
   });
 
   return (
-    <div className="flex h-[80vh] w-screen gap-3 mt-20">
+    <div className="flex h-[100vh] w-screen gap-3">
       <Navbar setPage={setPage} />
       <div className="flex h-4/5 w-4/5 gap-8">
         {page === 0 && (
