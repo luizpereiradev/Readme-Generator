@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { VscMarkdown } from 'react-icons/vsc';
-import { FiPlus, FiDownload } from 'react-icons/fi';
+import { FiPlus, FiDownload, FiSave } from 'react-icons/fi';
 import downloadFile from '../utils/download';
 import { GlobalContext } from '../store/GlobalStorage';
 
@@ -10,7 +10,7 @@ function Navbar({ setPage }) {
   const [projectsList] = projects;
   const [atual, setAtualProject] = atualProject;
   return (
-    <div className="bg-[#282a36] p-2 w-64">
+    <div className="bg-[#282a36] p-2 min-w-[16rem] ">
       <button className="border border-white/20" type="button" onClick={() => setPage(1)}>
         <FiPlus size={16} />
         Gerar novo Readme
@@ -34,6 +34,11 @@ function Navbar({ setPage }) {
         <button type="button" onClick={() => downloadFile(projectsList[atual])}>
           <FiDownload size={16} />
           Download
+        </button>
+        {/* todo - function to save on local storage */}
+        <button type="button">
+          <FiSave size={16} />
+          Save
         </button>
       </div>
     </div>

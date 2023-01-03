@@ -8,9 +8,9 @@ function Preview() {
   const [projectsList] = projects;
   const [atual] = atualProject;
   return (
-    <div className="w-[40vw]">
-      <p>Preview</p>
-      <div className="w-full h-[70vh] bg-[#282a36] overflow-auto border-white border border-solid">
+    <div className="w-[50%]">
+      <p className="h-[1vh]">Preview</p>
+      <div className="w-full h-[93vh] bg-[#282a36] overflow-auto">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           className="px-4"

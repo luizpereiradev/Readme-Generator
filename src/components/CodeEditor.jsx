@@ -13,13 +13,13 @@ function CodeEditor() {
   const [projectsList, setProjects] = projects;
 
   return (
-    <div className="w-[40vw]">
-      <p>Editor</p>
+    <div className="w-[50%] h-screen">
+      <p className="h-[1vh]">Editor</p>
       <CodeMirror
-        className=" border-white border border-solid relative"
+        className="relative"
         theme={dracula}
         width="100%"
-        height="70vh"
+        height="93vh"
         value={projectsList[atual]}
         onChange={(e) => setProjects({ ...projectsList, [atual]: e })}
         extensions={[

@@ -28,9 +28,10 @@ export default function App() {
   });
 
   return (
-    <div className="flex h-[100vh] w-screen gap-3">
+    <div className="flex h-[100vh] w-screen gap-1">
       <Navbar setPage={setPage} />
-      <div className="flex h-4/5 w-4/5 gap-8">
+
+      <div className="flex gap-1 w-screen">
         {page === 0 && (
           <>
             <CodeEditor />
