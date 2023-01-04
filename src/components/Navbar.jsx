@@ -10,7 +10,7 @@ function Navbar({ setPage }) {
   const [projectsList] = projects;
   const [atual, setAtualProject] = atualProject;
   return (
-    <div className="bg-[#282a36] p-2 min-w-[16rem] ">
+    <div className="bg-[#282C34] p-2 min-w-[16rem] ">
       <button className="border border-white/20" type="button" onClick={() => setPage(1)}>
         <FiPlus size={16} />
         Gerar novo Readme

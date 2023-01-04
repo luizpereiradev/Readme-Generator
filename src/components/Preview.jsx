@@ -10,7 +10,7 @@ function Preview() {
   return (
     <div className="w-[50%]">
       <p className="h-[1vh]">Preview</p>
-      <div className="w-full h-[93vh] bg-[#282a36] overflow-auto">
+      <div className="w-full h-[93vh] bg-[#282C34] overflow-auto">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           className="px-4"

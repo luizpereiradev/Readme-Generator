@@ -1,10 +1,10 @@
 import CodeMirror from '@uiw/react-codemirror';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
-import { dracula } from '@uiw/codemirror-theme-dracula';
 import { EditorView } from '@codemirror/view';
 import { FiCopy } from 'react-icons/fi';
 import React from 'react';
+import { oneDark } from '@codemirror/theme-one-dark';
 import { GlobalContext } from '../store/GlobalStorage';
 
 function CodeEditor() {
@@ -16,8 +16,8 @@ function CodeEditor() {
     <div className="w-[50%] h-screen">
       <p className="h-[1vh]">Editor</p>
       <CodeMirror
-        className="relative"
-        theme={dracula}
+        className="relative text-base"
+        theme={oneDark}
         width="100%"
         height="93vh"
         value={projectsList[atual]}

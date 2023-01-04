@@ -4,6 +4,7 @@ import About from './components/forms/About';
 import Navbar from './components/Navbar';
 import Preview from './components/Preview';
 import { GlobalContext } from './store/GlobalStorage';
+import Loading from './components/Loading';
 
 /* TODO:
   - [x] Criar um editor de código
@@ -18,14 +19,10 @@ import { GlobalContext } from './store/GlobalStorage';
 */
 
 export default function App() {
-  const { projects } = React.useContext(GlobalContext);
+  const { projects, isLoading } = React.useContext(GlobalContext);
   const setProjects = projects[1];
-
+  const [loading] = isLoading;
   const [page, setPage] = React.useState(0);
-  const [newProject, setNewProject] = React.useState({
-    name: '',
-    desc: '',
-  });
 
   return (
     <div className="flex h-[100vh] w-screen gap-1">
@@ -40,13 +37,12 @@ export default function App() {
         )}
         {page >= 1 && (
           <About
-            setProject={setNewProject}
-            project={newProject}
             setPage={setPage}
             setCode={setProjects}
           />
         )}
       </div>
+      {loading && <Loading />}
     </div>
   );
 }
