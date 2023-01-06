@@ -4,9 +4,7 @@ import React from 'react';
 import { GlobalContext } from '../store/GlobalStorage';
 
 function Preview() {
-  const { atualProject, projects } = React.useContext(GlobalContext);
-  const [projectsList] = projects;
-  const [atual] = atualProject;
+  const { atualProject: [atual], projects: [projectsList] } = React.useContext(GlobalContext);
   return (
     <div className="w-[50%]">
       <p className="h-[1vh]">Preview</p>

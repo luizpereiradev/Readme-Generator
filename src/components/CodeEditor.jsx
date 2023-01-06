@@ -8,9 +8,10 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import { GlobalContext } from '../store/GlobalStorage';
 
 function CodeEditor() {
-  const { atualProject, projects } = React.useContext(GlobalContext);
-  const [atual] = atualProject;
-  const [projectsList, setProjects] = projects;
+  const {
+    atualProject: [atual],
+    projects: [projectsList, setProjects],
+  } = React.useContext(GlobalContext);
 
   return (
     <div className="w-[50%] h-screen">

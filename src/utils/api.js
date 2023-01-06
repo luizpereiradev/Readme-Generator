@@ -10,7 +10,7 @@ const generateReadme = async (event, newProject) => {
   event.preventDefault();
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: `Crie um readme para um projeto o nome é ${newProject.name} e em resumo ele é: ${newProject.desc} e com as seções: [Recursos, Instalação, Uso, Contribuição, Licença]`,
+    prompt: `Crie um readme para um projeto o nome é ${newProject.name} e em resumo ele é: ${newProject.desc}, foi desenvolvido usando as seguintes tecnologias: [${newProject.tec}] e com as seções: [Recursos, Instalação, Uso, Contribuição, Licença]`,
     temperature: 0,
     max_tokens: 1000,
     top_p: 1,

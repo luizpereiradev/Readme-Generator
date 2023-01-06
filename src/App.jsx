@@ -19,9 +19,8 @@ import Loading from './components/Loading';
 */
 
 export default function App() {
-  const { projects, isLoading } = React.useContext(GlobalContext);
-  const setProjects = projects[1];
-  const [loading] = isLoading;
+  // eslint-disable-next-line no-unused-vars
+  const { projects: [_, setProjects], isLoading: [loading] } = React.useContext(GlobalContext);
   const [page, setPage] = React.useState(0);
 
   return (
