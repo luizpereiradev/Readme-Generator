@@ -48,11 +48,6 @@ function About({ setPage }) {
 }
 
 About.propTypes = {
-  project: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
-    tec: PropTypes.string.isRequired,
-  }).isRequired,
   setPage: PropTypes.func.isRequired,
 };
 

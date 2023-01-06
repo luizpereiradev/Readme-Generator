@@ -6,7 +6,11 @@ export const GlobalContext = React.createContext();
 
 export function GlobalStorage({ children }) {
   const projectsState = useLocalStorage('projects', {
+    'Pixelv Art Maker': '# Pixel Art Maker',
+    'Pixels Art Maker': '# Pixel Art Maker',
+    'Pixela Art Maker': '# Pixel Art Maker',
     'Pixel Art Maker': '# Pixel Art Maker',
+    'Pixelb Art Maker': '# Pixel Art Maker',
   });
 
   const loadingState = React.useState(false);

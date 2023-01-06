@@ -20,7 +20,10 @@ import Loading from './components/Loading';
 
 export default function App() {
   // eslint-disable-next-line no-unused-vars
-  const { projects: [_, setProjects], isLoading: [loading] } = React.useContext(GlobalContext);
+  const {
+    projects: [projects, setProjects],
+    isLoading: [loading],
+  } = React.useContext(GlobalContext);
   const [page, setPage] = React.useState(0);
 
   return (
@@ -28,17 +31,14 @@ export default function App() {
       <Navbar setPage={setPage} />
 
       <div className="flex gap-1 w-screen">
-        {page === 0 && (
+        {(page === 0 && Object.keys(projects).length !== 0) && (
           <>
             <CodeEditor />
             <Preview />
           </>
         )}
-        {page >= 1 && (
-          <About
-            setPage={setPage}
-            setCode={setProjects}
-          />
+        {(page >= 1 || Object.keys(projects).length === 0) && (
+          <About setPage={setPage} setCode={setProjects} />
         )}
       </div>
       {loading && <Loading />}
