@@ -1,10 +1,12 @@
 import React from 'react';
+
 import CodeEditor from './components/CodeEditor';
 import About from './components/forms/About';
 import Navbar from './components/Navbar';
 import Preview from './components/Preview';
 import { GlobalContext } from './store/GlobalStorage';
 import Loading from './components/Loading';
+import useDarkMode from './hooks/useDarkMode';
 
 /* TODO:
   - [x] Criar um editor de código

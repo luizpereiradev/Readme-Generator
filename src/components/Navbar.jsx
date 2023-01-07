@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { VscMarkdown } from 'react-icons/vsc';
 import {
-  FiPlus, FiDownload, FiDelete,
+  FiPlus, FiDownload, FiDelete, FiSun, FiMoon,
 } from 'react-icons/fi';
 import downloadFile from '../utils/download';
 import { GlobalContext } from '../store/GlobalStorage';
@@ -11,8 +11,8 @@ function Navbar({ setPage }) {
   const {
     projects: [projectsList, setProjectsList],
     atualProject: [atual, setAtualProject],
+    themeState: [theme, setTheme],
   } = React.useContext(GlobalContext);
-
   const handleDelete = (e) => {
     setAtualProject(projectsList[Object.keys(projectsList)[0]] || null);
     setProjectsList(
@@ -20,6 +20,7 @@ function Navbar({ setPage }) {
     );
   };
 
+  // organizar em componentes separados
   return (
     <div className="bg-[#282C34] p-2 min-w-[16rem] ">
       <button
@@ -52,6 +53,20 @@ function Navbar({ setPage }) {
         ))}
       </nav>
       <div className="border-0 border-t-gray-500 border-t-[1px] border-solid">
+        <button type="button" onClick={() => setTheme()}>
+          {theme === 'light' ? (
+            <>
+              <FiMoon size={16} />
+              Dark Mode
+            </>
+          )
+            : (
+              <>
+                <FiSun size={16} />
+                Light Mode
+              </>
+            )}
+        </button>
         {atual && (
         <button type="button" onClick={() => downloadFile(projectsList[atual])}>
           <FiDownload size={16} />

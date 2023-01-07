@@ -2,7 +2,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[hsl(220,12%,20%)] text-gray-200 m-0;
+  @apply text-gray-200 m-0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 pre{
-  @apply font-medium text-lg leading-6 whitespace-pre-wrap bg-[hsl(218,15%,14%)] text-white p-4 rounded-lg overflow-x-auto;
+  @apply font-medium text-lg leading-6 whitespace-pre-wrap bg-gray-800 text-white p-4 rounded-lg overflow-x-auto;
   word-wrap: break-word;
 }
 
