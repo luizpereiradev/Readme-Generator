@@ -26,7 +26,7 @@ function SelectLanguages({ setValue }) {
               backgroundColor: '#fff',
               color: '#000',
               borderColor: '#000',
-              width: '101%',
+              width: '27rem',
             }),
             option: (base) => ({
               ...base,

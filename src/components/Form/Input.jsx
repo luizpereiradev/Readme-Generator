@@ -12,7 +12,7 @@ function Input({ label, id, length }) {
     <label htmlFor={id}>
       <p className="pt-3 pb-1 m-0">{label}</p>
       <input
-        className="w-full rounded-md h-8 shadow-none focus:outline-none focus:border-blue-500 border-2"
+        className="w-[27rem] rounded-md h-8 shadow-none focus:outline-none focus:border-blue-500 border-2"
         type="text"
         value={project[id]}
         id={id}
