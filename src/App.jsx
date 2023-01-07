@@ -28,17 +28,16 @@ export default function App() {
 
   return (
     <div className="flex h-[100vh] w-screen gap-1">
-      <Navbar setPage={setPage} />
+      <Navbar setPage={setPage} page={page} />
 
       <div className="flex gap-1 w-screen">
         {(page === 0 && Object.keys(projects).length !== 0 && atual) && (
           <>
-            {console.log(projects)}
             <CodeEditor />
             <Preview />
           </>
         )}
-        {(page >= 1 || Object.keys(projects).length === 0) && !atual && (
+        {(page >= 1 || Object.keys(projects).length === 0 || !atual) && (
           <Form setPage={setPage} setCode={setProjects} />
         )}
       </div>
