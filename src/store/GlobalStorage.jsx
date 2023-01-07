@@ -33,6 +33,7 @@ export function GlobalStorage({ children }) {
   );
 
   useEffect(() => {
+    if (window.location.pathname === '/') return;
     if (atualProjectState[0].length !== 0 && Object.keys(projectsState[0]).length !== 0) {
       navigate('/editor');
     } else {
