@@ -7,17 +7,6 @@ import Preview from './components/Preview';
 import { GlobalContext } from './store/GlobalStorage';
 import Loading from './components/Loading';
 
-/* TODO:
-  - [x] Criar um editor de código
-  - [x] Criar um preview do readme
-  - [x] Criar um botão para copiar o readme gerado
-  - [x] Criar um formulário para inserir as informações do projeto
-  - [x] Criar um botão para salvar o readme gerado
-  - [x] Salvar os projetos no local storage
-  - [x] Criar uma navegação lateral para acessar os projetos salvos
-  - [x] Criar um botão para salvar projetos
-*/
-
 export default function App() {
   const {
     projects: [projects, setProjects],
