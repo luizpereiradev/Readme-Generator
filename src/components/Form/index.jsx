@@ -4,16 +4,20 @@ import PropTypes from 'prop-types';
 import generateReadme from '../../utils/api';
 import { GlobalContext } from '../../store/GlobalStorage';
 import Input from './Input';
+import SelectLanguages from './SelectLanguages';
 
 function About({ setPage }) {
   const {
     projects: [projectsList, setCode],
-    atualProject: [__, setAtual],
-    isLoading: [_, setLoading],
-    newProject: [project],
+    atualProject: [, setAtual],
+    isLoading: [, setLoading],
+    newProject: [project, setNewProject],
   } = React.useContext(GlobalContext);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!project.name || !project.desc || !project.tec) return window.alert('Preencha todos os campos');
+    if (projectsList[project.name]) return window.alert('Já existe um projeto com esse nome');
     setLoading(true);
     await setCode({
       ...projectsList,
@@ -33,9 +37,9 @@ function About({ setPage }) {
         <h1 className=" text-4xl w-full font-semibold border-none mb-20">
           Nos diga mais sobre seu projeto
         </h1>
-        <Input label="Nome do Projeto:" id="name" />
-        <Input label="Breve Descrição:" id="desc" />
-        <Input label="Tecnologias usadas:" id="tec" />
+        <Input label="Nome do Projeto:" id="name" length={20} />
+        <Input label="Breve Descrição:" id="desc" length={100} />
+        <SelectLanguages setValue={setNewProject} />
       </div>
       <button
         type="submit"

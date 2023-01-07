@@ -26,21 +26,6 @@ function OptionsNav() {
 
   return (
     <div className="border-0 border-t-gray-500 border-t-[1px] border-solid">
-      {Object.keys(projectsList).length !== 0 && (
-      <button type="button" onClick={() => handleDeleteAll()}>
-        {deleteClicked ? (
-          <>
-            <FiCheck size={16} />
-            Confirm Delete
-          </>
-        ) : (
-          <>
-            <FiTrash2 size={16} />
-            Delete All
-          </>
-        )}
-      </button>
-      )}
 
       <button type="button" onClick={() => setTheme()}>
         {theme === 'light' ? (
@@ -56,6 +41,22 @@ function OptionsNav() {
             </>
           )}
       </button>
+
+      {Object.keys(projectsList).length !== 0 && (
+      <button type="button" onClick={() => handleDeleteAll()}>
+        {deleteClicked ? (
+          <>
+            <FiCheck size={16} />
+            Confirm Delete
+          </>
+        ) : (
+          <>
+            <FiTrash2 size={16} />
+            Delete All
+          </>
+        )}
+      </button>
+      )}
 
       {atual && (
       <button type="button" onClick={() => downloadFile(projectsList[atual])}>

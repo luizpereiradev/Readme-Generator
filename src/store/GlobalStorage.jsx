@@ -29,7 +29,7 @@ export function GlobalStorage({ children }) {
 
   useEffect(() => {
     window.document
-      .querySelectorAll('h1, h2, h3, h4, h5, h6, p')
+      .querySelectorAll('h1, h2, h3, h4, h5, h6, p, li')
       .forEach((block) => {
         if (themeState[0] === 'light') {
           block.classList.add('text-black');

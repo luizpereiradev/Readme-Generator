@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { GlobalContext } from '../../store/GlobalStorage';
 
-function Input({ label, id }) {
+function Input({ label, id, length }) {
   const { newProject: [project, setProject] } = React.useContext(GlobalContext);
 
   const onChange = (e) => {
@@ -17,6 +17,7 @@ function Input({ label, id }) {
         value={project[id]}
         id={id}
         onChange={onChange}
+        maxLength={length}
       />
     </label>
   );
@@ -25,6 +26,7 @@ function Input({ label, id }) {
 Input.propTypes = {
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  length: PropTypes.number.isRequired,
 };
 
 export default Input;
