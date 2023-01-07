@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Preview from './components/Preview';
 import { GlobalContext } from './store/GlobalStorage';
 import Loading from './components/Loading';
+import Alert from './components/Alert';
 
 export default function App() {
   const {
@@ -31,6 +32,7 @@ export default function App() {
         )}
       </div>
       {loading && <Loading />}
+      <Alert />
     </div>
   );
 }

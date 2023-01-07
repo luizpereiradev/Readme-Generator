@@ -14,7 +14,7 @@ function Navbar({ setPage, page }) {
         onClick={() => setPage(1)}
       >
         <FiPlus size={16} />
-        Gerar novo Readme
+        Generate new Readme
       </button>
 
       <ProjectsList setPage={setPage} page={page} />

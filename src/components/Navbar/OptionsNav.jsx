@@ -11,6 +11,7 @@ function OptionsNav() {
     projects: [projectsList, setProjectsList],
     atualProject: [atual],
     themeState: [theme, setTheme],
+    notificationState: [, setNotification],
   } = React.useContext(GlobalContext);
 
   const [deleteClicked, setDeleteClicked] = React.useState(false);
@@ -18,6 +19,7 @@ function OptionsNav() {
   const handleDeleteAll = () => {
     if (deleteClicked) {
       setProjectsList({});
+      setNotification({ notification: 'All projects deleted!', id: Math.random() });
       setDeleteClicked(false);
       return;
     }
@@ -57,9 +59,8 @@ function OptionsNav() {
         )}
       </button>
       )}
-
-      {atual && (
-      <button type="button" onClick={() => downloadFile(projectsList[atual])}>
+      {(Object.keys(projectsList).length !== 0 || atual) && (
+      <button type="button" onClick={() => { downloadFile(projectsList[atual]); setNotification({ notification: 'Download started!', id: Math.random() }); }}>
         <FiDownload size={16} />
         Download
       </button>

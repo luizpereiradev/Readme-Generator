@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import generateReadme from '../../utils/api';
 import { GlobalContext } from '../../store/GlobalStorage';
 import Input from './Input';
+import SelectTechnologies from './SelectTechnologies';
 import SelectLanguages from './SelectLanguages';
 
 function About({ setPage }) {
@@ -12,12 +13,13 @@ function About({ setPage }) {
     atualProject: [, setAtual],
     isLoading: [, setLoading],
     newProject: [project, setNewProject],
+    notificationState: [, setNotificationState],
   } = React.useContext(GlobalContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!project.name || !project.desc || !project.tec) return window.alert('Preencha todos os campos');
-    if (projectsList[project.name]) return window.alert('Já existe um projeto com esse nome');
+    if (!project.name || !project.desc || !project.tec) return setNotificationState({ notification: 'Fill in all the fields', id: Math.random(), type: 'error' });
+    if (projectsList[project.name]) return setNotificationState({ notification: 'There is already a project with this name', id: Math.random(), type: 'error' });
     setLoading(true);
     await setCode({
       ...projectsList,
@@ -26,6 +28,7 @@ function About({ setPage }) {
     setLoading(false);
     setAtual(project.name);
     setPage((page) => page - 1);
+    return true;
   };
 
   return (
@@ -35,17 +38,18 @@ function About({ setPage }) {
     >
       <div className="flex flex-col gap-8 ">
         <h1 className=" text-4xl w-full font-semibold border-none mb-20">
-          Nos diga mais sobre seu projeto
+          Describe your project
         </h1>
-        <Input label="Nome do Projeto:" id="name" length={20} />
-        <Input label="Breve Descrição:" id="desc" length={100} />
+        <Input label="Project Name:" id="name" length={20} />
+        <Input label="Short Description:" id="desc" length={100} />
+        <SelectTechnologies setValue={setNewProject} />
         <SelectLanguages setValue={setNewProject} />
       </div>
       <button
         type="submit"
-        className="w-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-20"
+        className="w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-20"
       >
-        Gerar Readme
+        Generate Readme
       </button>
     </form>
   );

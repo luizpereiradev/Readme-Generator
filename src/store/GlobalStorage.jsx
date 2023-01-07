@@ -17,10 +17,13 @@ export function GlobalStorage({ children }) {
   const loadingState = React.useState(false);
   const themeState = useDarkMode();
 
+  const notificationState = React.useState('seja bem vindo!');
+
   const newProjectState = React.useState({
     name: '',
     desc: '',
     tec: '',
+    lang: '',
   });
 
   const atualProjectState = React.useState(
@@ -52,6 +55,7 @@ export function GlobalStorage({ children }) {
       isLoading: loadingState,
       newProject: newProjectState,
       themeState,
+      notificationState,
     }),
     [
       projectsState,

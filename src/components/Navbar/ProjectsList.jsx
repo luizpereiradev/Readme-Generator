@@ -9,12 +9,16 @@ function ProjectsList({ setPage, page }) {
   const {
     projects: [projectsList, setProjectsList],
     atualProject: [atual, setAtualProject],
+    notificationState: [, setNotification],
   } = React.useContext(GlobalContext);
 
   const handleDelete = (e) => {
+    const project = e.target.parentNode.textContent;
+    if (project === '') return;
     setAtualProject(projectsList[Object.keys(projectsList)[0]] || false);
+    setNotification({ notification: `Project "${project}" deleted`, id: Math.random() });
     setProjectsList(
-      ({ [e.target.parentNode.textContent]: l, ...rest }) => ({ ...rest }),
+      ({ [project]: l, ...rest }) => ({ ...rest }),
     );
   };
 
