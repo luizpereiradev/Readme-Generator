@@ -4,8 +4,8 @@ import { VscMarkdown } from 'react-icons/vsc';
 import {
   FiPlus, FiDownload, FiDelete, FiSun, FiMoon,
 } from 'react-icons/fi';
-import downloadFile from '../utils/download';
-import { GlobalContext } from '../store/GlobalStorage';
+import downloadFile from '../../utils/download';
+import { GlobalContext } from '../../store/GlobalStorage';
 
 function Navbar({ setPage }) {
   const {
@@ -14,7 +14,7 @@ function Navbar({ setPage }) {
     themeState: [theme, setTheme],
   } = React.useContext(GlobalContext);
   const handleDelete = (e) => {
-    setAtualProject(projectsList[Object.keys(projectsList)[0]] || null);
+    setAtualProject(projectsList[Object.keys(projectsList)[0]] || false);
     setProjectsList(
       ({ [e.target.parentNode.textContent]: l, ...rest }) => ({ ...rest }),
     );

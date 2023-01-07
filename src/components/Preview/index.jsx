@@ -1,7 +1,7 @@
 import remarkGfm from 'remark-gfm';
 import ReactMarkdown from 'react-markdown';
 import React from 'react';
-import { GlobalContext } from '../store/GlobalStorage';
+import { GlobalContext } from '../../store/GlobalStorage';
 
 function Preview() {
   const {

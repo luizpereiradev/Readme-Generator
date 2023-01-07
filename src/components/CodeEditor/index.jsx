@@ -6,7 +6,7 @@ import { FiCopy } from 'react-icons/fi';
 import React from 'react';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { githubLight } from '@uiw/codemirror-theme-github';
-import { GlobalContext } from '../store/GlobalStorage';
+import { GlobalContext } from '../../store/GlobalStorage';
 
 function CodeEditor() {
   const {

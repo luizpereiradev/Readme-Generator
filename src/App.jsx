@@ -1,12 +1,11 @@
 import React from 'react';
 
 import CodeEditor from './components/CodeEditor';
-import About from './components/forms/About';
+import Form from './components/Form';
 import Navbar from './components/Navbar';
 import Preview from './components/Preview';
 import { GlobalContext } from './store/GlobalStorage';
 import Loading from './components/Loading';
-import useDarkMode from './hooks/useDarkMode';
 
 /* TODO:
   - [x] Criar um editor de código
@@ -14,17 +13,16 @@ import useDarkMode from './hooks/useDarkMode';
   - [x] Criar um botão para copiar o readme gerado
   - [x] Criar um formulário para inserir as informações do projeto
   - [x] Criar um botão para salvar o readme gerado
-  - [] Salvar os projetos no local storage
-  - [] Criar uma navegação lateral para acessar os projetos salvos
-  - [] Criar um botão para salvar projetos
-  - [] Criar um botão para gerar um readme aleatório
+  - [x] Salvar os projetos no local storage
+  - [x] Criar uma navegação lateral para acessar os projetos salvos
+  - [x] Criar um botão para salvar projetos
 */
 
 export default function App() {
-  // eslint-disable-next-line no-unused-vars
   const {
     projects: [projects, setProjects],
     isLoading: [loading],
+    atualProject: [atual],
   } = React.useContext(GlobalContext);
   const [page, setPage] = React.useState(0);
 
@@ -33,14 +31,15 @@ export default function App() {
       <Navbar setPage={setPage} />
 
       <div className="flex gap-1 w-screen">
-        {(page === 0 && Object.keys(projects).length !== 0) && (
+        {(page === 0 && Object.keys(projects).length !== 0 && atual) && (
           <>
+            {console.log(projects)}
             <CodeEditor />
             <Preview />
           </>
         )}
-        {(page >= 1 || Object.keys(projects).length === 0) && (
-          <About setPage={setPage} setCode={setProjects} />
+        {(page >= 1 || Object.keys(projects).length === 0) && !atual && (
+          <Form setPage={setPage} setCode={setProjects} />
         )}
       </div>
       {loading && <Loading />}
