@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import generateReadme from '../../utils/api';
 import { GlobalContext } from '../../store/GlobalStorage';
 import Input from './Input';
 import SelectTechnologies from './SelectTechnologies';
 import SelectLanguages from './SelectLanguages';
 
-function About({ setPage }) {
+function About() {
   const {
     projects: [projectsList, setCode],
     atualProject: [, setAtual],
@@ -15,6 +15,8 @@ function About({ setPage }) {
     newProject: [project, setNewProject],
     notificationState: [, setNotificationState],
   } = React.useContext(GlobalContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +29,7 @@ function About({ setPage }) {
     });
     setLoading(false);
     setAtual(project.name);
-    setPage((page) => page - 1);
+    navigate('/editor');
     return true;
   };
 
@@ -47,16 +49,12 @@ function About({ setPage }) {
       </div>
       <button
         type="submit"
-        className="w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-20"
+        className="w-40 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-20 flex items-center justify-center"
       >
         Generate Readme
       </button>
     </form>
   );
 }
-
-About.propTypes = {
-  setPage: PropTypes.func.isRequired,
-};
 
 export default About;

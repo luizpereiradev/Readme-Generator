@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 
 import { VscMarkdown } from 'react-icons/vsc';
 import { FiDelete } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../store/GlobalStorage';
 
-function ProjectsList({ setPage, page }) {
+function ProjectsList({ page }) {
   const {
     projects: [projectsList, setProjectsList],
     atualProject: [atual, setAtualProject],
     notificationState: [, setNotification],
   } = React.useContext(GlobalContext);
 
+  const navigate = useNavigate();
+
   const handleDelete = (e) => {
     const project = e.target.parentNode.textContent;
     if (project === '') return;
-    setAtualProject(projectsList[Object.keys(projectsList)[0]] || false);
+    setAtualProject(false);
     setNotification({ notification: `Project "${project}" deleted`, id: Math.random() });
     setProjectsList(
       ({ [project]: l, ...rest }) => ({ ...rest }),
@@ -26,11 +29,11 @@ function ProjectsList({ setPage, page }) {
     <nav className="h-3/4 overflow-scroll">
       {Object.keys(projectsList)?.map((project) => project && (
       <button
-        className={`group relative ${atual === project && page < 1 && 'bg-white/20'}`}
+        className={`group relative ${atual === project && page !== 'form' && 'bg-white/20'}`}
         type="button"
         onClick={(e) => {
           setAtualProject(e.target.textContent);
-          setPage(0);
+          navigate('/editor');
         }}
         key={project}
       >
@@ -48,8 +51,7 @@ function ProjectsList({ setPage, page }) {
 }
 
 ProjectsList.propTypes = {
-  setPage: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default ProjectsList;

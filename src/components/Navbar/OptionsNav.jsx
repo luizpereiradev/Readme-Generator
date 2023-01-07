@@ -28,7 +28,6 @@ function OptionsNav() {
 
   return (
     <div className="border-0 border-t-gray-500 border-t-[1px] border-solid">
-
       <button type="button" onClick={() => setTheme()}>
         {theme === 'light' ? (
           <>
@@ -59,7 +58,7 @@ function OptionsNav() {
         )}
       </button>
       )}
-      {(Object.keys(projectsList).length !== 0 || atual) && (
+      {(Object.keys(projectsList).length !== 0 && atual) && (
       <button type="button" onClick={() => { downloadFile(projectsList[atual]); setNotification({ notification: 'Download started!', id: Math.random() }); }}>
         <FiDownload size={16} />
         Download

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import useLocalStorage from '../hooks/useLocalStorage';
 import useDarkMode from '../hooks/useDarkMode';
 
@@ -13,6 +14,7 @@ export function GlobalStorage({ children }) {
     'Pixel Art Maker': '# Pixel Art Maker',
     'Pixelb Art Maker': '# Pixel Art Maker',
   });
+  const navigate = useNavigate();
 
   const loadingState = React.useState(false);
   const themeState = useDarkMode();
@@ -29,6 +31,14 @@ export function GlobalStorage({ children }) {
   const atualProjectState = React.useState(
     projectsState[0] ? Object.keys(projectsState[0])[0] : null,
   );
+
+  useEffect(() => {
+    if (atualProjectState[0].length !== 0 && Object.keys(projectsState[0]).length !== 0) {
+      navigate('/editor');
+    } else {
+      navigate('/form');
+    }
+  }, [projectsState[0], atualProjectState[0]]);
 
   useEffect(() => {
     window.document
