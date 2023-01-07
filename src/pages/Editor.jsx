@@ -4,7 +4,6 @@ import '../index.css';
 import CodeEditor from '../components/CodeEditor';
 import Navbar from '../components/Navbar';
 import Preview from '../components/Preview';
-import Alert from '../components/Alert';
 
 export default function App() {
   return (
@@ -14,7 +13,6 @@ export default function App() {
         <CodeEditor />
         <Preview />
       </div>
-      <Alert />
     </div>
   );
 }

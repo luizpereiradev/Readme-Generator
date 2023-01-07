@@ -6,14 +6,11 @@ function Alert() {
   const [show, setShow] = React.useState(true);
   const { notificationState: [notification] } = React.useContext(GlobalContext);
   React.useEffect(() => {
+    if (notification) setShow(true);
     const timer = setTimeout(() => {
       setShow(false);
     }, 2000);// 2 seconds
     return () => clearTimeout(timer);
-  }, [notification]);
-
-  React.useEffect(() => {
-    if (notification) setShow(true);
   }, [notification]);
 
   if (!show) return null;

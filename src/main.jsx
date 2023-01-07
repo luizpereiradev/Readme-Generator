@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Editor from './pages/Editor';
 import Home from './Home';
 import Form from './pages/Form';
+import Alert from './components/Alert';
 import { GlobalStorage } from './store/GlobalStorage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/editor" element={<Editor />} />
         <Route path="/form" element={<Form />} />
       </Routes>
+      <Alert />
     </GlobalStorage>
   </BrowserRouter>,
 );

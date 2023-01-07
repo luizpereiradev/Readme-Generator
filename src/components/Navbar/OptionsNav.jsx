@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   FiDownload, FiSun, FiMoon, FiTrash2, FiCheck,
@@ -6,10 +7,10 @@ import {
 import { GlobalContext } from '../../store/GlobalStorage';
 import downloadFile from '../../utils/download';
 
-function OptionsNav() {
+function OptionsNav({ page }) {
   const {
     projects: [projectsList, setProjectsList],
-    atualProject: [atual],
+    atualProject: [atual, setAtual],
     themeState: [theme, setTheme],
     notificationState: [, setNotification],
   } = React.useContext(GlobalContext);
@@ -21,6 +22,7 @@ function OptionsNav() {
       setProjectsList({});
       setNotification({ notification: 'All projects deleted!', id: Math.random() });
       setDeleteClicked(false);
+      setAtual('');
       return;
     }
     setDeleteClicked(true);
@@ -58,7 +60,7 @@ function OptionsNav() {
         )}
       </button>
       )}
-      {(Object.keys(projectsList).length !== 0 && atual) && (
+      {page === 'editor' && (
       <button type="button" onClick={() => { downloadFile(projectsList[atual]); setNotification({ notification: 'Download started!', id: Math.random() }); }}>
         <FiDownload size={16} />
         Download
@@ -68,5 +70,9 @@ function OptionsNav() {
     </div>
   );
 }
+
+OptionsNav.propTypes = {
+  page: PropTypes.string.isRequired,
+};
 
 export default OptionsNav;

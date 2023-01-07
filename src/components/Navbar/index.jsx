@@ -22,7 +22,7 @@ function Navbar({ page }) {
       </button>
 
       <ProjectsList page={page} />
-      <OptionsNav />
+      <OptionsNav page={page} />
     </div>
   );
 }
