@@ -2,11 +2,15 @@
 @tailwind utilities;
 
 body {
-  @apply text-gray-200 m-0;
+  @apply text-gray-200 m-0 bg-[#F7F7F8] dark:bg-[rgba(45,47,51,1)];
 }
 
 h1, h2, h3, h4, h5, h6 {
   @apply border-0 border-b border-gray-600 border-solid;
+}
+
+h1, h2, h3, h4, h5, h6, p, li{
+  @apply text-black dark:text-white;
 }
 
 pre{

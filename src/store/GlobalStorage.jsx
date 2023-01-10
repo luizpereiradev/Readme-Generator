@@ -41,24 +41,6 @@ export function GlobalStorage({ children }) {
     }
   }, [projectsState[0], atualProjectState[0]]);
 
-  useEffect(() => {
-    window.document
-      .querySelectorAll('h1, h2, h3, h4, h5, h6, p, li')
-      .forEach((block) => {
-        if (themeState[0] === 'light') {
-          block.classList.add('text-black');
-          block.classList.remove('text-white');
-          window.document.body.classList.add('bg-[#F7F7F8]');
-          window.document.body.classList.remove('bg-[rgba(45,47,51,1)]');
-        } else {
-          block.classList.add('text-white');
-          block.classList.remove('text-black');
-          window.document.body.classList.add('bg-[rgba(45,47,51,1)]');
-          window.document.body.classList.remove('bg-[#F7F7F8]');
-        }
-      });
-  }, [atualProjectState, projectsState]);
-
   const memo = React.useMemo(
     () => ({
       projects: projectsState,

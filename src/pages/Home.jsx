@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import {
   FiRefreshCw, FiLock, FiArrowRight, FiGithub,
 } from 'react-icons/fi';
-import pre from './assets/pre.png';
-import smPre from './assets/smpre.png';
-import mdPre from './assets/mdpre.png';
-import lgPre from './assets/lgpre.png';
+import pre from '../assets/pre.png';
+import smPre from '../assets/smpre.png';
+import mdPre from '../assets/mdpre.png';
+import lgPre from '../assets/lgpre.png';
+import { GlobalContext } from '../store/GlobalStorage';
 
 function Home() {
+  const { themeState: [, setTheme] } = React.useContext(GlobalContext);
+  setTheme('dark');
   return (
     <div className="w-[90%] max-w-7xl mx-auto h-max">
       <div style={{ boxShadow: 'inset -2px -25px 80px 40px rgba(45,47,51,1)' }} className=" opacity-50 border-none w-[80vw] h-[500px] rounded-[100%] bg-green-900 top-[-300px] absolute m-auto left-0 right-0 -z-50" />

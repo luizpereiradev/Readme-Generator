@@ -8,15 +8,12 @@ function Preview({ toggle }) {
   const {
     atualProject: [atual],
     projects: [projectsList],
-    themeState: [theme],
   } = React.useContext(GlobalContext);
   return (
     <div className={`${toggle ? 'w-11/12' : 'w-1/2'} h-screen mx-auto`}>
       <p className={`h-[1vh] ml-[calc(100%-90px)] font-display ${toggle && 'invisible'}`}>Preview</p>
       <div
-        className={`w-full h-[93vh] ${
-          theme === 'dark' ? 'bg-[#282C34]' : 'bg-white'
-        } overflow-auto`}
+        className="w-full h-[93vh] dark:bg-[#282C34] bg-white overflow-auto"
       >
         <ReactMarkdown remarkPlugins={[remarkGfm]} className="px-4">
           {projectsList[atual]}

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Editor from './pages/editor/index';
-import Home from './Home';
+import Home from './pages/Home';
 import Form from './pages/Form';
 import Alert from './components/Alert';
 import { GlobalStorage } from './store/GlobalStorage';
