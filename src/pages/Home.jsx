@@ -18,7 +18,7 @@ function Home() {
 
       <header className="w-full text-xl p-3 font-bold flex justify-between">
         RGenerator
-        <a className="text-slate-100" href="https://github.com/luizpereiradev/Readme-Generatorhttps://github.com/luizpereiradev/Readme-Generator">
+        <a className="text-slate-100" href="https://github.com/luizpereiradev/Readme-Generator">
           <FiGithub size={24} className="hover:w-7 hover:h-7 cursor-pointer" />
         </a>
 
