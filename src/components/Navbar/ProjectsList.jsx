@@ -26,7 +26,7 @@ function ProjectsList({ page }) {
   };
 
   return (
-    <nav className="h-3/4 overflow-scroll">
+    <nav className="h-3/4 overflow-auto">
       {Object.keys(projectsList)?.map((project) => project && (
       <button
         className={`group relative ${atual === project && page !== 'form' && 'bg-white/20'}`}
