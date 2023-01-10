@@ -18,7 +18,10 @@ function Home() {
 
       <header className="w-full text-xl p-3 font-bold flex justify-between">
         RGenerator
-        <FiGithub size={24} className="hover:w-7 hover:h-7 cursor-pointer" />
+        <a className="text-slate-100" href="https://github.com/luizpereiradev/Readme-Generatorhttps://github.com/luizpereiradev/Readme-Generator">
+          <FiGithub size={24} className="hover:w-7 hover:h-7 cursor-pointer" />
+        </a>
+
       </header>
       <main className="flex w-full flex-col items-center justify-center">
         <h1 className="border-none text-center font-display font-light mt-[7vh]">
