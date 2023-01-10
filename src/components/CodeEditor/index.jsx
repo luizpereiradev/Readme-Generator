@@ -4,11 +4,12 @@ import { languages } from '@codemirror/language-data';
 import { EditorView } from '@codemirror/view';
 import { FiCopy } from 'react-icons/fi';
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { githubLight } from '@uiw/codemirror-theme-github';
 import { GlobalContext } from '../../store/GlobalStorage';
 
-function CodeEditor() {
+function CodeEditor({ toggle }) {
   const {
     atualProject: [atual],
     projects: [projectsList, setProjects],
@@ -16,8 +17,8 @@ function CodeEditor() {
   } = React.useContext(GlobalContext);
 
   return (
-    <div className="w-[50%] h-screen">
-      <p className="h-[1vh]">Editor</p>
+    <div className={`${toggle ? 'w-11/12' : 'w-1/2'} h-screen mx-auto`}>
+      <p className={`h-[1vh] ml-[calc(100%-90px)] font-display ${toggle && 'invisible'}`}>Editor</p>
       <CodeMirror
         className="relative text-base"
         theme={theme === 'dark' ? oneDark : githubLight}
@@ -39,5 +40,13 @@ function CodeEditor() {
     </div>
   );
 }
+
+CodeEditor.propTypes = {
+  toggle: PropTypes.bool,
+};
+
+CodeEditor.defaultProps = {
+  toggle: false,
+};
 
 export default CodeEditor;

@@ -1,17 +1,18 @@
 import remarkGfm from 'remark-gfm';
 import ReactMarkdown from 'react-markdown';
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { GlobalContext } from '../../store/GlobalStorage';
 
-function Preview() {
+function Preview({ toggle }) {
   const {
     atualProject: [atual],
     projects: [projectsList],
     themeState: [theme],
   } = React.useContext(GlobalContext);
   return (
-    <div className="w-[50%]">
-      <p className="h-[1vh]">Preview</p>
+    <div className={`${toggle ? 'w-11/12' : 'w-1/2'} h-screen mx-auto`}>
+      <p className={`h-[1vh] ml-[calc(100%-90px)] font-display ${toggle && 'invisible'}`}>Preview</p>
       <div
         className={`w-full h-[93vh] ${
           theme === 'dark' ? 'bg-[#282C34]' : 'bg-white'
@@ -25,4 +26,11 @@ function Preview() {
   );
 }
 
+Preview.propTypes = {
+  toggle: PropTypes.bool,
+};
+
+Preview.defaultProps = {
+  toggle: false,
+};
 export default Preview;

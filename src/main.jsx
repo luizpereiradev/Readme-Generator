@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Editor from './pages/Editor';
+import Editor from './pages/editor/index';
 import Home from './Home';
 import Form from './pages/Form';
 import Alert from './components/Alert';

@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const generateReadme = async (event, newProject) => {
+const generateReadme = async (newProject) => {
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: `me responda na lingua: ${newProject.lang || 'inglesa'}, Crie um readme para um projeto o nome é ${newProject.name} e em resumo ele é: ${newProject.desc}, foi desenvolvido usando as seguintes tecnologias: [${newProject.tec}], com as seções: [Recursos, Instalação, Uso, Contribuição, Licença]`,

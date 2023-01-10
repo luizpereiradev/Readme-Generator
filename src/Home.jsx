@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import {
   FiRefreshCw, FiLock, FiArrowRight, FiGithub,
 } from 'react-icons/fi';
-import preview from './assets/readme-pre.png';
+import pre from './assets/pre.png';
+import smPre from './assets/smpre.png';
+import mdPre from './assets/mdpre.png';
+import lgPre from './assets/lgpre.png';
 
 function Home() {
   return (
     <div className="w-[90%] max-w-7xl mx-auto h-max">
-      <div style={{ boxShadow: 'inset -2px -25px 80px 40px rgba(45,47,51,1)' }} className=" opacity-50 border-none w-[80vw] h-[500px] rounded-[100%] bg-purple-900 top-[-300px] absolute m-auto left-0 right-0 -z-50" />
+      <div style={{ boxShadow: 'inset -2px -25px 80px 40px rgba(45,47,51,1)' }} className=" opacity-50 border-none w-[80vw] h-[500px] rounded-[100%] bg-green-900 top-[-300px] absolute m-auto left-0 right-0 -z-50" />
 
       <header className="w-full text-xl p-3 font-bold flex justify-between">
         RGenerator
@@ -36,7 +39,7 @@ function Home() {
           </button>
         </Link>
         <div className="h-[700px] w-full bg-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 flex justify-center mt-20 relative">
-          <div style={{ boxShadow: 'inset -2px -25px 80px 40px rgba(45,47,51,1)' }} className=" opacity-20 border-none w-full h-[700px] top-[-100px] rounded-[100%] bg-purple-900 absolute m-auto left-0 right-0 -z-50" />
+          <div style={{ boxShadow: 'inset -2px -25px 80px 40px rgba(45,47,51,1)' }} className=" opacity-20 border-none w-full h-[700px] top-[-100px] rounded-[100%] bg-green-900 absolute m-auto left-0 right-0 -z-50" />
           <div className="absolute top-5 left-7 flex flex-row gap-2 p-2">
             <div className="w-3 h-3 bg-red-500 rounded-full" />
             <div className="w-3 h-3 bg-yellow-500 rounded-full" />
@@ -48,7 +51,10 @@ function Home() {
             RGenerator.md
             <FiRefreshCw />
           </div>
-          <img src={preview} alt="preview" className="h-[85%] w-[95%] mt-20 rounded-md" />
+          <img src={pre} alt="preview" className=" sm:hidden h-[85%] w-[95%] mt-20 rounded-md" />
+          <img src={smPre} alt="preview" className="hidden sm:block md:hidden h-[85%] w-[95%] mt-20 rounded-md" />
+          <img src={mdPre} alt="preview" className="hidden md:block lg:hidden h-[85%] w-[95%] mt-20 rounded-md" />
+          <img src={lgPre} alt="preview" className="hidden lg:block h-[85%] w-[95%] mt-20 rounded-md" />
         </div>
       </main>
     </div>

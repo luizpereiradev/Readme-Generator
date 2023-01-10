@@ -49,11 +49,11 @@ export function GlobalStorage({ children }) {
           block.classList.add('text-black');
           block.classList.remove('text-white');
           window.document.body.classList.add('bg-[#F7F7F8]');
-          window.document.body.classList.remove('bg-[hsl(220,12%,20%)]');
+          window.document.body.classList.remove('bg-[rgba(45,47,51,1)]');
         } else {
           block.classList.add('text-white');
           block.classList.remove('text-black');
-          window.document.body.classList.add('bg-[hsl(220,12%,20%)]');
+          window.document.body.classList.add('bg-[rgba(45,47,51,1)]');
           window.document.body.classList.remove('bg-[#F7F7F8]');
         }
       });

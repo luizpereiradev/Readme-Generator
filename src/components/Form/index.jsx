@@ -25,7 +25,7 @@ function About() {
     setLoading(true);
     await setCode({
       ...projectsList,
-      [project.name]: await generateReadme(e, project),
+      [project.name]: await generateReadme(project),
     });
     setLoading(false);
     setAtual(project.name);
@@ -36,12 +36,9 @@ function About() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col h-full w-full items-center justify-center"
+      className="flex flex-col h-full w-full xl:w-1/2 items-center justify-center"
     >
       <div className="flex flex-col gap-8 w-5/12 justify-center items-center">
-        <h1 className=" text-4xl font-semibold border-none mb-20">
-          Describe your project
-        </h1>
         <Input label="Project Name:" id="name" length={20} />
         <Input label="Short Description:" id="desc" length={100} />
         <SelectTechnologies setValue={setNewProject} />
