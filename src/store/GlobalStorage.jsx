@@ -8,18 +8,13 @@ export const GlobalContext = React.createContext();
 
 export function GlobalStorage({ children }) {
   const projectsState = useLocalStorage('projects', {
-    'Pixelv Art Maker': '# Pixel Art Maker',
-    'Pixels Art Maker': '# Pixel Art Maker',
-    'Pixela Art Maker': '# Pixel Art Maker',
-    'Pixel Art Maker': '# Pixel Art Maker',
-    'Pixelb Art Maker': '# Pixel Art Maker',
   });
   const navigate = useNavigate();
 
   const loadingState = React.useState(false);
   const themeState = useDarkMode();
 
-  const notificationState = React.useState('seja bem vindo!');
+  const notificationState = React.useState('Welcome!');
 
   const newProjectState = React.useState({
     name: '',
