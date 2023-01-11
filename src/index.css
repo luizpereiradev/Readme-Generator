@@ -2,7 +2,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-gray-200 m-0 bg-[#F7F7F8] dark:bg-[rgba(45,47,51,1)] overflow-x-hidden;
+  @apply text-gray-200 m-0 bg-[#F7F7F8] dark:bg-[rgba(45,47,51,1)] overflow-y-hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
